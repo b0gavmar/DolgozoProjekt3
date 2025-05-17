@@ -64,7 +64,7 @@ namespace DolgozoProjektAsztal.Repos
         public void RemoveEmployeeWithoutSalary(string email)
         {
             Employee employee = _context.Manyworkers.FirstOrDefault(e=>e.Email == email);
-            if (employee != null && employee.Salary >0)
+            if (employee != null && employee.Salary <=0)
             {
                 _context.Remove(employee);
                 _context.SaveChanges();
@@ -84,7 +84,7 @@ namespace DolgozoProjektAsztal.Repos
 
         public List<Employee> SearchByName(string name)
         {
-            return _context.Manyworkers.Where(w=>w.Name.Contains(name)).ToList();
+            return _context.Manyworkers.Where(w=>w.Name.ToLower().Contains(name.ToLower())).ToList();
         }
 
         public List<Employee> SearchByDomain(string email)

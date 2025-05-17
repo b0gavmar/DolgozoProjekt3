@@ -36,6 +36,8 @@ public partial class DolgozoContext2 : DbContext
             entity.Property(e => e.Salary)
                 .HasColumnType("INT")
                 .HasColumnName("salary");
+
+            entity.HasKey(e => e.Email);
         });
 
 

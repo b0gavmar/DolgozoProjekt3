@@ -29,19 +29,6 @@ public partial class DolgozoContext : DbContext
         {
             entity
                 .HasNoKey()
-                .ToTable("manyworker");
-
-            entity.Property(e => e.Email).HasColumnName("email");
-            entity.Property(e => e.Name).HasColumnName("name");
-            entity.Property(e => e.Salary)
-                .HasColumnType("INT")
-                .HasColumnName("salary");
-        });
-
-        modelBuilder.Entity<Employee>(entity =>
-        {
-            entity
-                .HasNoKey()
                 .ToTable("worker");
 
             entity.Property(e => e.Email).HasColumnName("email");
@@ -49,6 +36,8 @@ public partial class DolgozoContext : DbContext
             entity.Property(e => e.Salary)
                 .HasColumnType("INT")
                 .HasColumnName("salary");
+
+            entity.HasKey(e => e.Email);
         });
 
         OnModelCreatingPartial(modelBuilder);

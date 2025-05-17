@@ -10,9 +10,11 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -21,6 +23,23 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <ListBox ItemsSource="{Binding Dolgozok}"></ListBox>
+        <ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" ItemsSource="{Binding Dolgozok}" SelectedItem="{Binding CurrentEmployee}"></ListBox>
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="2" Text="Név:"></TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding Name, Mode=TwoWay}"></TextBox>
+        <TextBlock Grid.Row="1" Grid.Column="2" Margin="2" Text="Email:"></TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="3" Margin="2" Text="{Binding Email, Mode=TwoWay}"></TextBox>
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="2" Text="Minimum:"></TextBlock>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="2" Text="{Binding Min, Mode=TwoWay}"></TextBox>
+        <TextBlock Grid.Row="2" Grid.Column="2" Margin="2" Text="Max:"></TextBlock>
+        <TextBox Grid.Row="2" Grid.Column="3" Margin="2" Text="{Binding Max, Mode=TwoWay}"></TextBox>
+        <TextBlock Grid.Row="3" Grid.Column="0" Margin="2" Text="Fizetés:"></TextBlock>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="2" Text="{Binding Payment, Mode=TwoWay}"></TextBox>
+        <Button Grid.Row="3" Grid.Column="2" Margin="2" Content="Fizet" Command="{Binding PayEmployeeCommand}"></Button>
+        <Button Grid.Row="3" Grid.Column="3" Margin="2" Content="Törlés ha nincs fizetése" Command="{Binding RemoveIfNoPaymentCommand}"></Button>
+        <Button Grid.Row="4" Grid.Column="0" Margin="2" Content="Új" Command="{Binding AddNewCommand}"></Button>
+        <Button Grid.Row="4" Grid.Column="1" Margin="2" Content="Név szűrés" Command="{Binding SearchByNameCommand}"></Button>
+        <Button Grid.Row="4" Grid.Column="2" Margin="2" Content="Domain szűrés" Command="{Binding SearchByNameCommand}"></Button>
+        <Button Grid.Row="4" Grid.Column="3" Margin="2" Content="Összeg szűrés" Command="{Binding SearchBySalaryCommand}"></Button>
+
     </Grid>
 </UserControl>
