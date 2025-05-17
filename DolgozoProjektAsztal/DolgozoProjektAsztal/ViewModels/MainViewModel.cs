@@ -17,12 +17,16 @@ namespace DolgozoProjektAsztal.ViewModels
         private ControlPanelViewModel _controlPanelViewModel;
 
         [ObservableProperty]
+        private DolgozoViewModel _dolgozoViewModel;
+
+        [ObservableProperty]
         private object _currentViewModel;
 
         public MainViewModel()
         {
             _manyEmployeeRepo = new ManyEmployeeRepo();
             _controlPanelViewModel = new ControlPanelViewModel(_manyEmployeeRepo);
+            _dolgozoViewModel = new DolgozoViewModel(_manyEmployeeRepo);
 
             _currentViewModel = _controlPanelViewModel;
         }
@@ -30,8 +34,15 @@ namespace DolgozoProjektAsztal.ViewModels
         [RelayCommand]
         public void ShowControlPanel()
         {
-            _controlPanelViewModel.Update();
-            _currentViewModel = _controlPanelViewModel;
+            ControlPanelViewModel.Update();
+            CurrentViewModel = ControlPanelViewModel;
+        }
+
+        [RelayCommand]
+        public void ShowDolgozoView()
+        {
+            DolgozoViewModel.Update();
+            CurrentViewModel = DolgozoViewModel;
         }
     }
 }

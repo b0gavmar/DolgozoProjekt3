@@ -11,6 +11,11 @@ namespace DolgozoProjektAsztal.Repos
     {
         private readonly DolgozoContext2 _context = new DolgozoContext2();
 
+        public List<Employee> GetAll()
+        {
+            return _context.Manyworkers.ToList();
+        }
+
         public int GetNumberOfEmployees()
         {
             return _context.Manyworkers.Count();
@@ -84,7 +89,16 @@ namespace DolgozoProjektAsztal.Repos
 
         public List<Employee> SearchByDomain(string email)
         {
-            return _context.Manyworkers.Where(w => w.Email.Contains(email) || w.Email.Contains("@"+email)).ToList();
+            string domain;
+            if (email.Contains("@"))
+            {
+                domain = email.Split("@")[1];
+            }
+            else
+            {
+                domain =email;
+            }
+            return _context.Manyworkers.Where(w => w.Email.Contains(domain)).ToList();
         }
 
         public List<Employee> SearchBySalary(int min, int max)

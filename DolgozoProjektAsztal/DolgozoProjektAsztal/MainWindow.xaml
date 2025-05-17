@@ -19,11 +19,12 @@
     <StackPanel>
         <DockPanel>
             <Menu>
-                <MenuItem Header="Vezérlőpult" Command=""></MenuItem>
+                <MenuItem Header="Vezérlőpult" Command="{Binding ShowControlPanelCommand}"></MenuItem>
+                <MenuItem Header="Dolgozó" Command="{Binding ShowDolgozoViewCommand}"></MenuItem>
             </Menu>
         </DockPanel>
         <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
-            <TextBlock>-------------------- statikus controlpanel ------------</TextBlock>
-        <view:ControlPanel DataContext="{Binding ControlPanelViewModel}"></view:ControlPanel>
+            <!--TextBlock>statikus controlpanel</TextBlock>
+        <view:ControlPanel DataContext="{Binding ControlPanelViewModel}"></view:ControlPanel-->
     </StackPanel>
 </Window>
